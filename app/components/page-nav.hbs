@@ -1,0 +1,5 @@
+<div class="page-nav-container">
+  <button disabled={{(if @prevPageAvailable false true)}}><span class="material-icons">chevron_left</span></button>
+  <span class="status-text">{{@pageNumber}} / {{@totalPageCount}}</span>
+  <button disabled={{(if @nextPageAvailable false true)}}><span class="material-icons">chevron_right</span></button>
+</div>

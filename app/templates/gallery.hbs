@@ -7,5 +7,11 @@
       @columns={{@model.gridColumns}}
       @imageUrls={{@model.imageUrls}}
     />
+    <PageNav
+      @pageNumber={{@model.currentPageNumber}}
+      @totalPageCount={{@model.totalPageCount}}
+      @prevPageAvailable={{@model.prevPageAvailable}}
+      @nextPageAvailable={{@model.nextPageAvailable}}
+    />
   </div>
 </div>

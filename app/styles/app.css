@@ -20,3 +20,46 @@
     aspect-ratio: 1;
   }
 }
+
+.page-nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: LightGreen;
+    color: #5a5a5a;
+    min-height: 4rem;
+    aspect-ratio: 1;
+    border-radius: 10%;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #5a5a5a;
+
+    &:disabled {
+      background-color: Grey;
+    }
+    &:not(:disabled) {
+      &:hover, &:focus {
+        background-color: LimeGreen;
+      }
+      &:active {
+        background-color: Green;
+      }
+    }
+    .material-icons {
+      font-size: 30pt;
+    }
+
+  }
+
+  .status-text {
+    margin: 0 3rem;
+
+  }
+
+}
