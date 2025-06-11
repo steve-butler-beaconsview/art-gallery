@@ -1,8 +1,22 @@
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
 
-.tile {
+.content-area {
   display: flex;
-  justify-content: center;
-  background-color: LightGrey;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-grid-container {
+  width: 80vh;
   aspect-ratio: 1;
+  flex: 0 0 auto;
+  margin: 5vh 0;
+
+  .tile {
+    display: flex;
+    justify-content: center;
+    background-color: lightgrey;
+    aspect-ratio: 1;
+  }
 }

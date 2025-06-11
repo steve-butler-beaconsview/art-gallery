@@ -1,13 +1,11 @@
 {{page-title "Gallery"}}
 
-{{#each @model as |row|}}
-  <div class="row small-up-5">
-    {{#each row as |image|}}
-      <div class="column column-block">
-        <div class="tile">
-          <img src="https://www.artic.edu/iiif/2/{{image}}/full/200,/0/default.jpg" />
-        </div>
-      </div>
-    {{/each}}
+<div class="content-area">
+  <div class="image-grid-container">
+    <ImageGrid
+      @rows={{@model.gridRows}}
+      @columns={{@model.gridColumns}}
+      @imageUrls={{@model.imageUrls}}
+    />
   </div>
-{{/each}}
+</div>
