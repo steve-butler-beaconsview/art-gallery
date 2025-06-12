@@ -2,16 +2,22 @@
 
 <div class="content-area">
   <div class="image-grid-container">
-    <ImageGrid
-      @rows={{@model.gridDimensions.rows}}
-      @columns={{@model.gridDimensions.columns}}
-      @imageUrls={{@model.imageUrls}}
-    />
-    <PageNav
-      @pageNumber={{@model.paginationData.currentPageNumber}}
-      @totalPageCount={{@model.paginationData.totalPageCount}}
-      @goToPrevPage={{@model.goToPrevPage}}
-      @goToNextPage={{@model.goToNextPage}}
-    />
+    {{#if @model.error}}
+      <div class="gallery-error">
+        An error occurred while retrieving the gallery. Please try reloading the page.
+      </div>
+    {{else}}
+      <ImageGrid
+        @rows={{@model.gridDimensions.rows}}
+        @columns={{@model.gridDimensions.columns}}
+        @imageUrls={{@model.imageUrls}}
+      />
+      <PageNav
+        @pageNumber={{@model.paginationData.currentPageNumber}}
+        @totalPageCount={{@model.paginationData.totalPageCount}}
+        @goToPrevPage={{@model.goToPrevPage}}
+        @goToNextPage={{@model.goToNextPage}}
+      />
+    {{/if}}
   </div>
 </div>

@@ -40,13 +40,22 @@ export default class GalleryRoute extends Route {
       rows: 5,
       columns: 5,
     }
+    let pageInfo;
+    try {
+      pageInfo = await this.retrieveNewPage(
+        currentPageNumber,
+        this.buildPageUrlFromPageNumber(currentPageNumber, gridDimensions)
+      );
+    } catch (e) {
+      return {
+        error: true,
+      }
+    }
+
     const {
       paginationData,
       imageUrls,
-    } = await this.retrieveNewPage(
-      currentPageNumber,
-      this.buildPageUrlFromPageNumber(currentPageNumber, gridDimensions)
-    );
+    } = pageInfo;
     const goToIndexPage = page => {
       debugger;
       this.router.transitionTo('gallery', { queryParams: { page } });
