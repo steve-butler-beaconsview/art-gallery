@@ -1,10 +1,44 @@
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
 
+
 .content-area {
   display: flex;
   width: 100vw;
   flex-direction: column;
   align-items: center;
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgreen;
+    color: #5a5a5a;
+    min-height: 4rem;
+    border-radius: 10%;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #5a5a5a;
+
+    &:disabled {
+      background-color: grey;
+    }
+
+    &:not(:disabled) {
+      &:hover, &:focus {
+        background-color: limegreen;
+      }
+
+      &:active {
+        background-color: green;
+      }
+    }
+
+    .material-icons {
+      font-size: 30pt;
+    }
+  }
+
+
 }
 
 .image-grid-container {
@@ -78,6 +112,7 @@
 
       &.remove {
         background-color: lightpink;
+
         &:not(:disabled) {
           &:hover, &:focus {
             background-color: lightcoral;
@@ -87,8 +122,6 @@
             background-color: indianred;
           }
         }
-
-
       }
     }
   }
@@ -130,7 +163,6 @@
     .material-icons {
       font-size: 30pt;
     }
-
   }
 
   .status-text {

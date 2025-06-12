@@ -87,6 +87,9 @@ export default class GalleryRoute extends Route {
       this.router.transitionTo('gallery', { queryParams: { page } });
     }
 
+    const goToFavourites = () => {
+      this.router.transitionTo('favourites');
+    }
     return {
       gridDimensions,
       paginationData,
@@ -94,6 +97,7 @@ export default class GalleryRoute extends Route {
       selectedImageInfo,
       goToPrevPage: currentPageNumber > 1 ? () => goToIndexPage(currentPageNumber - 1) : undefined,
       goToNextPage: currentPageNumber < paginationData.totalPageCount ? () => goToIndexPage(currentPageNumber + 1) : undefined,
+      goToFavourites,
     }
   }
 }

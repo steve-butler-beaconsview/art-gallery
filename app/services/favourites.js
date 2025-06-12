@@ -12,4 +12,7 @@ export default class FavouritesService extends Service {
   isFavourite (imageId) {
     return !!this._favs[imageId];
   }
+  getAllIds () {
+    return Object.keys(this._favs);
+  }
 }
