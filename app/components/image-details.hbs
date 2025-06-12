@@ -17,5 +17,12 @@
     {{{ @description }}}
   </div>
 </div>
-<button class="button" {{on 'click' @goBackToGallery}}>Return to Gallery</button>
+<div class="buttons-container">
+  <button type="button" {{on 'click' @goBackToGallery}}>Return to Gallery</button>
+  {{#if this.isFavourite}}
+    <button class="remove" type="button" {{on 'click' this.removeFavourite}}>Remove from Favourites</button>
+  {{else}}
+    <button type="button" {{on 'click' this.addFavourite}}>Add to Favourites</button>
+  {{/if}}
+</div>
 

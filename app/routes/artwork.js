@@ -4,6 +4,7 @@ import axios from 'axios';
 export default class ArtworkRoute extends Route {
   async model () {
     const {
+      imageId,
       imageInfoUrl,
       largeImageUrl: imageUrl,
       goBackToGallery,
@@ -29,6 +30,7 @@ export default class ArtworkRoute extends Route {
       date,
       description: description || 'No description provided.',
       imageUrl,
+      imageId,
       goBackToGallery,
     };
     return model;

@@ -34,6 +34,7 @@ export default class GalleryRoute extends Route {
     };
     const model = {
       selectedImageInfo: {
+        imageId: undefined,
         imageInfoUrl: '',
         largeImageUrl: '',
         goBackToGallery,
@@ -41,6 +42,7 @@ export default class GalleryRoute extends Route {
     };
     const goToImageInfoPage = (id, imageInfoUrl, largeImageUrl) => {
       Object.assign(model.selectedImageInfo, {
+        imageId: id,
         imageInfoUrl,
         largeImageUrl,
       });
