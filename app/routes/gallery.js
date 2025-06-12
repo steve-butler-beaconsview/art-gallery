@@ -28,19 +28,28 @@ export default class GalleryRoute extends Route {
       prevPageUrl,
     };
     const { data: { data } } = pageResponse;
-    const goToImageInfoPage = (id, url) => {
-      // this.router.transitionTo('artwork', url, { queryParams: { id } });
+    
+    const model = {
+      selectedImageInfo: {
+        imageInfoUrl: '',
+        largeImageUrl: '',
+      },
+    };
+    const goToImageInfoPage = (id, imageInfoUrl, largeImageUrl) => {
+      Object.assign(model.selectedImageInfo, {
+        imageInfoUrl,
+        largeImageUrl,
+      });
       this.router.transitionTo('artwork', { queryParams: { id } });
-    }
+    };
     const imagesInfo = data.map(({ id, image_id }) => ({
       id,
-      goToImageInfoPage: () => goToImageInfoPage(id, `https://api.artic.edu/api/v1/artworks/${id}`),
+      goToImageInfoPage: () => goToImageInfoPage(id, `https://api.artic.edu/api/v1/artworks/${id}`, `https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`),
       imageUrl: `https://www.artic.edu/iiif/2/${image_id}/full/200,/0/default.jpg`,
     }));
-    return {
-      paginationData,
-      imagesInfo,
-    };
+    model.paginationData = paginationData;
+    model.imagesInfo = imagesInfo;
+    return model;
   }
   async model ({ page: currentPageNumber = 1 }) {
     const gridDimensions = {
@@ -62,6 +71,7 @@ export default class GalleryRoute extends Route {
     const {
       paginationData,
       imagesInfo,
+      selectedImageInfo,
     } = pageInfo;
     const goToIndexPage = page => {
       this.router.transitionTo('gallery', { queryParams: { page } });
@@ -71,6 +81,7 @@ export default class GalleryRoute extends Route {
       gridDimensions,
       paginationData,
       imagesInfo,
+      selectedImageInfo,
       goToPrevPage: currentPageNumber > 1 ? () => goToIndexPage(currentPageNumber - 1) : undefined,
       goToNextPage: currentPageNumber < paginationData.totalPageCount ? () => goToIndexPage(currentPageNumber + 1) : undefined,
     }

@@ -30,6 +30,16 @@
   }
 }
 
+.image-details-container {
+  width: 80vh;
+  flex: 0 0 auto;
+  margin: 5vh 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .page-nav-container {
   width: 100%;
   display: flex;

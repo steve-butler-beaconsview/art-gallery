@@ -1,2 +1,20 @@
 {{page-title "Artwork"}}
-{{outlet}}
+
+
+<div class="content-area">
+  <div class="image-details-container">
+    {{#if @model.error}}
+      <div class="gallery-error">
+        An error occurred while retrieving the image data. Please hit back to return to the gallery.
+      </div>
+    {{else}}
+      <ImageDetails
+        @imageUrl={{@model.imageUrl}}
+        @title={{@model.title}}
+        @artist={{@model.artist}}
+        @date={{@model.date}}
+        @description={{@model.description}}
+      />
+    {{/if}}
+  </div>
+</div>
