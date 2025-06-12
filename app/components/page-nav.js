@@ -5,7 +5,8 @@ import { on } from '@ember/modifier'
 export default class PageNavComponent extends Component {
   constructor () {
     super(...arguments);
-    getOwner(this).register('modifier:on', on);
+    const owner = getOwner(this);
+    owner.unregister('modifier:on');
+    owner.register('modifier:on', on);
   }
 }
-
