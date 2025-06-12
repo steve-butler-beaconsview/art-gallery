@@ -2,7 +2,10 @@
   <div class="row small-up-5">
     {{#each row as |imageData|}}
       <div class="column column-block">
-        <ImageTile @thumbnailUrl={{imageData}} />
+        <ImageTile
+          @thumbnailUrl={{imageData.imageUrl}}
+          @goToImageInfoPage={{imageData.goToImageInfoPage}}
+        />
       </div>
     {{/each}}
   </div>

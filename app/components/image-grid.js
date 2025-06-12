@@ -6,7 +6,6 @@ export default class ImageGridComponent extends Component {
       return [[]];
     }
     return this.args.imagesInfo
-      .map(({ imageUrl }) => imageUrl)
       .reduce((acc, id, ndx, allIds) => {
         const rowNdx = ndx % this.args.columns;
         if (rowNdx === 0 && rowNdx < this.args.rows) {

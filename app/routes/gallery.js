@@ -28,9 +28,13 @@ export default class GalleryRoute extends Route {
       prevPageUrl,
     };
     const { data: { data } } = pageResponse;
+    const goToImageInfoPage = (id, url) => {
+      // this.router.transitionTo('artwork', url, { queryParams: { id } });
+      this.router.transitionTo('artwork', { queryParams: { id } });
+    }
     const imagesInfo = data.map(({ id, image_id }) => ({
       id,
-      imageInfoUrl: `https://api.artic.edu/api/v1/artworks/${id}`,
+      goToImageInfoPage: () => goToImageInfoPage(id, `https://api.artic.edu/api/v1/artworks/${id}`),
       imageUrl: `https://www.artic.edu/iiif/2/${image_id}/full/200,/0/default.jpg`,
     }));
     return {
