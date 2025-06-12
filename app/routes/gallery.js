@@ -28,11 +28,15 @@ export default class GalleryRoute extends Route {
       prevPageUrl,
     };
     const { data: { data } } = pageResponse;
-    
+
+    const goBackToGallery = () => {
+      this.router.transitionTo('gallery', { queryParams: { page: pageNumber } });
+    };
     const model = {
       selectedImageInfo: {
         imageInfoUrl: '',
         largeImageUrl: '',
+        goBackToGallery,
       },
     };
     const goToImageInfoPage = (id, imageInfoUrl, largeImageUrl) => {
