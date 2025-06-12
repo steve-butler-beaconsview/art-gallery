@@ -10,7 +10,7 @@ export default class GalleryRoute extends Route {
   };
   buildPageUrlFromPageNumber (pageNumber, gridDimensions) {
     const maxRetrievalSize = gridDimensions.columns * gridDimensions.rows;
-    const currentPageUrl = `https://api.artic.edu/api/v1/artworks?page=${pageNumber}&limit=${maxRetrievalSize}&fields=id,image_id,width,height`;
+    const currentPageUrl = `https://api.artic.edu/api/v1/artworks?page=${pageNumber}&limit=${maxRetrievalSize}&fields=id,image_id`;
     return currentPageUrl;
   }
 
@@ -28,11 +28,14 @@ export default class GalleryRoute extends Route {
       prevPageUrl,
     };
     const { data: { data } } = pageResponse;
-    const imageUrls = data.map(({ image_id }) => image_id)
-      .map(id => `https://www.artic.edu/iiif/2/${id}/full/200,/0/default.jpg`);
+    const imagesInfo = data.map(({ id, image_id }) => ({
+      id,
+      imageInfoUrl: `https://api.artic.edu/api/v1/artworks/${id}`,
+      imageUrl: `https://www.artic.edu/iiif/2/${image_id}/full/200,/0/default.jpg`,
+    }));
     return {
       paginationData,
-      imageUrls,
+      imagesInfo,
     };
   }
   async model ({ page: currentPageNumber = 1 }) {
@@ -54,17 +57,16 @@ export default class GalleryRoute extends Route {
 
     const {
       paginationData,
-      imageUrls,
+      imagesInfo,
     } = pageInfo;
     const goToIndexPage = page => {
-      debugger;
       this.router.transitionTo('gallery', { queryParams: { page } });
     }
 
     return {
       gridDimensions,
       paginationData,
-      imageUrls,
+      imagesInfo,
       goToPrevPage: currentPageNumber > 1 ? () => goToIndexPage(currentPageNumber - 1) : undefined,
       goToNextPage: currentPageNumber < paginationData.totalPageCount ? () => goToIndexPage(currentPageNumber + 1) : undefined,
     }
