@@ -27,6 +27,11 @@
     &:hover, &:focus {
       transform: scale(1.3);
     }
+
+    .favourite-icon {
+      color: hotpink;
+      transform: translate(1.5rem,.5rem);
+    }
   }
 }
 

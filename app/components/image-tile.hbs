@@ -1,3 +1,6 @@
 <a class="tile" tabindex="0" {{on 'click' @goToImageInfoPage}} >
+  {{#if this.isFavourite}}
+    <div class="favourite-icon"><span class="material-icons">thumb_up</span></div>
+  {{/if}}
   <img src="{{@thumbnailUrl}}" />
 </a>

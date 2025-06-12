@@ -3,6 +3,7 @@
     {{#each row as |imageData|}}
       <div class="column column-block">
         <ImageTile
+          @imageId={{imageData.id}}
           @thumbnailUrl={{imageData.imageUrl}}
           @goToImageInfoPage={{imageData.goToImageInfoPage}}
         />
