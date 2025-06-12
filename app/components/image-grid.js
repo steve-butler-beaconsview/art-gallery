@@ -2,7 +2,9 @@ import Component from '@glimmer/component';
 
 export default class ImageGridComponent extends Component {
   get gridContents () {
-    debugger;
+    if (!this.args.imageUrls) {
+      return [[]];
+    }
     return this.args.imageUrls.reduce((acc, id, ndx, allIds) => {
         const rowNdx = ndx % this.args.columns;
         if (rowNdx === 0 && rowNdx < this.args.rows) {
@@ -13,8 +15,5 @@ export default class ImageGridComponent extends Component {
         }
         return acc;
       }, []);
-
   }
-
-
 }

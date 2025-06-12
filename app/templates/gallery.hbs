@@ -3,15 +3,15 @@
 <div class="content-area">
   <div class="image-grid-container">
     <ImageGrid
-      @rows={{@model.gridRows}}
-      @columns={{@model.gridColumns}}
+      @rows={{@model.gridDimensions.rows}}
+      @columns={{@model.gridDimensions.columns}}
       @imageUrls={{@model.imageUrls}}
     />
     <PageNav
-      @pageNumber={{@model.currentPageNumber}}
-      @totalPageCount={{@model.totalPageCount}}
-      @prevPageAvailable={{@model.prevPageAvailable}}
-      @nextPageAvailable={{@model.nextPageAvailable}}
+      @pageNumber={{@model.paginationData.currentPageNumber}}
+      @totalPageCount={{@model.paginationData.totalPageCount}}
+      @goToPrevPage={{@model.goToPrevPage}}
+      @goToNextPage={{@model.goToNextPage}}
     />
   </div>
 </div>

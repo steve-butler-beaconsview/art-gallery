@@ -1,5 +1,13 @@
 <div class="page-nav-container">
-  <button disabled={{(if @prevPageAvailable false true)}}><span class="material-icons">chevron_left</span></button>
+  {{#let (modifier 'on' 'click' @goToPrevPage) as |handleClick|}}
+    <button disabled={{if @goToPrevPage false true}} type="button" {{ (if @goToPrevPage handleClick) }}>
+      <span class="material-icons">chevron_left</span>
+    </button>
+  {{/let}}
   <span class="status-text">{{@pageNumber}} / {{@totalPageCount}}</span>
-  <button disabled={{(if @nextPageAvailable false true)}}><span class="material-icons">chevron_right</span></button>
+  {{#let (modifier 'on' 'click' @goToNextPage) as |handleClick|}}
+    <button disabled={{if @goToNextPage false true}} type="button" {{ (if @goToNextPage handleClick) }}>
+      <span class="material-icons">chevron_right</span>
+    </button>
+  {{/let}}
 </div>
