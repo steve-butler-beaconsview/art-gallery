@@ -4,6 +4,7 @@ import { service } from '@ember/service';
 
 export default class GalleryRoute extends Route {
   @service router;
+  @service('artworks') artworksService;
 
   queryParams = {
     page: { refreshModel: true },
@@ -96,6 +97,9 @@ export default class GalleryRoute extends Route {
     const goToFavourites = () => {
       this.router.transitionTo('favourites');
     }
+    const goToHistory = () => {
+      this.router.transitionTo('history');
+    }
     return {
       gridDimensions,
       paginationData,
@@ -104,6 +108,7 @@ export default class GalleryRoute extends Route {
       goToPrevPage: currentPageNumber > 1 ? () => goToIndexPage(currentPageNumber - 1) : undefined,
       goToNextPage: currentPageNumber < paginationData.totalPageCount ? () => goToIndexPage(currentPageNumber + 1) : undefined,
       goToFavourites,
+      goToHistory,
     }
   }
 }

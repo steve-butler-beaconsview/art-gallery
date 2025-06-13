@@ -37,8 +37,6 @@
       font-size: 30pt;
     }
   }
-
-
 }
 
 .image-grid-container {
@@ -64,13 +62,24 @@
 
     .icons-overlay {
       transform: translate(1.5rem,.5rem);
+
       .viewed-icon {
         color: lime;
       }
+
       .favourite-icon {
         color: hotpink;
       }
     }
+  }
+}
+
+.gallery-nav-buttons {
+  display: flex;
+  margin: 1rem 0 0;
+
+  .button {
+    margin: 0 .5rem;
   }
 }
 
@@ -178,6 +187,20 @@
   }
 }
 
+.history-container {
+  width: 80vh;
+  flex: 0 0 auto;
+  margin: 5vh 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .viewed-artwork {
+    margin: 0 0 1rem;
+  }
+}
+
 .page-nav-container {
   width: 100%;
   display: flex;
@@ -220,5 +243,4 @@
     margin: 0 3rem;
 
   }
-
 }

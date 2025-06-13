@@ -22,7 +22,7 @@ export default class ArtworkRoute extends Route {
     } catch (e) {
       return { error: true };
     }
-    this.viewTrackerService.add(imageId);
+    this.viewTrackerService.add(imageId, thumbnailImageUrl);
     const {
       title,
       artist_title: artist,

@@ -9,7 +9,7 @@ export default class FavouritesRoute extends Route {
     const {
       goBackToGallery,
     } = this.controllerFor('gallery').get('model')?.selectedImageInfo || {};
-const allIds = this.favouritesService.getAllIds();
+    const allIds = this.favouritesService.getAllIds();
     const categories = allIds
       .map(imageId => ({
         ...(this.favouritesService.getFavouriteInfo(imageId) || {}),

@@ -10,4 +10,5 @@ Router.map(function () {
   this.route('gallery');
   this.route('artwork');
   this.route('favourites');
+  this.route('history');
 });

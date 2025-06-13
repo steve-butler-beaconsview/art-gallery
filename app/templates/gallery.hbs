@@ -18,7 +18,10 @@
         @goToPrevPage={{@model.goToPrevPage}}
         @goToNextPage={{@model.goToNextPage}}
       />
-      <button class="button" type="button" {{on 'click' @model.goToFavourites}}>See All <span class="material-icons">thumb_up</span></button>
+      <div class="gallery-nav-buttons">
+        <button class="button" type="button" {{on 'click' @model.goToFavourites}}>See All <span class="material-icons">thumb_up</span></button>
+        <button class="button" type="button" {{on 'click' @model.goToHistory}}>See All <span class="material-icons">visibility</span></button>
+      </div>
     {{/if}}
   </div>
 </div>
