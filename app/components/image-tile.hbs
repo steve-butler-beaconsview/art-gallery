@@ -7,5 +7,5 @@
       <div class="favourite-icon"><span class="material-icons">thumb_up</span></div>
     {{/if}}
   </div>
-  <img src="{{@thumbnailUrl}}" />
+  <img src="{{@thumbnailUrl}}" alt="artwork number {{@imageId}}{{(if this.wasViewed ', viewed')}}{{(if this.isFavourite ', favourite')}}" />
 </button>

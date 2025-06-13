@@ -6,7 +6,7 @@
     <button type="button" class="button" {{on 'click' @model.goBackToGallery}} >Return to Gallery</button>
     {{#each @model.allViewed as |artwork|}}
       <div class="viewed-artwork">
-        <img src="{{ artwork.thumbnailImageUrl }}" />
+        <img src="{{ artwork.thumbnailImageUrl }}" alt="viewed artwork number {{artwork.imageId}}" />
       </div>
     {{/each}}
   </div>

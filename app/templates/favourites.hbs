@@ -12,7 +12,7 @@
       <div class="category-items">
         {{#each categoryItems as |artwork| }}
           <div class="favourite-artwork">
-            <img src="{{ artwork.thumbnailImageUrl }}" />
+            <img src="{{ artwork.thumbnailImageUrl }}" alt="favourite artwork number {{artwork.imageId}}" />
             <button class="overlay" type="button" {{on 'click' artwork.removeFromFavourites}} >
               <p class="remove-icon">
                 <span class="material-icons x-icon">close</span>
