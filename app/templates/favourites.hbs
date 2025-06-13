@@ -5,6 +5,7 @@
   <div class="favourites-container">
     <h1>Favourites</h1>
     <h2>Total items: {{ @model.totalCount }}</h2>
+    <button type="button" class="button" {{on 'click' @model.goBackToGallery}} >Return to Gallery</button>
     {{#each-in @model.categories as |categoryName categoryItems| }}
       <h3 class="category-header">{{ categoryName }}</h3>
       <h4>Total items: {{ categoryItems.length }}</h4>

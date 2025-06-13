@@ -5,7 +5,10 @@ export default class FavouritesRoute extends Route {
   @service('favourites') favouritesService;
 
   model () {
-    const allIds = this.favouritesService.getAllIds();
+    const {
+      goBackToGallery,
+    } = this.controllerFor('gallery').get('model')?.selectedImageInfo || {};
+const allIds = this.favouritesService.getAllIds();
     const categories = allIds
       .map(imageId => ({
         ...(this.favouritesService.getFavouriteInfo(imageId) || {}),
@@ -21,6 +24,7 @@ export default class FavouritesRoute extends Route {
     return {
       totalCount: allIds.length,
       categories,
+      goBackToGallery,
     }
   }
 }
