@@ -62,9 +62,14 @@
       transform: scale(1.3);
     }
 
-    .favourite-icon {
-      color: hotpink;
+    .icons-overlay {
       transform: translate(1.5rem,.5rem);
+      .viewed-icon {
+        color: lime;
+      }
+      .favourite-icon {
+        color: hotpink;
+      }
     }
   }
 }
