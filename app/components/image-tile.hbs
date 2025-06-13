@@ -1,6 +1,11 @@
-<a class="tile" tabindex="0" {{on 'click' @goToImageInfoPage}} >
-  {{#if this.isFavourite}}
-    <div class="favourite-icon"><span class="material-icons">thumb_up</span></div>
-  {{/if}}
-  <img src="{{@thumbnailUrl}}" />
-</a>
+<button class="tile" tabindex="0" {{on 'click' @goToImageInfoPage}} >
+  <div class="icons-overlay">
+    {{#if this.wasViewed}}
+      <div class="viewed-icon"><span class="material-icons">visibility</span></div>
+    {{/if}}
+    {{#if this.isFavourite}}
+      <div class="favourite-icon"><span class="material-icons">thumb_up</span></div>
+    {{/if}}
+  </div>
+  <img src="{{@thumbnailUrl}}" alt="artwork number {{@imageId}}{{(if this.wasViewed ', viewed')}}{{(if this.isFavourite ', favourite')}}" />
+</button>

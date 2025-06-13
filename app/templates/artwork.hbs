@@ -10,11 +10,13 @@
     {{else}}
       <ImageDetails
         @imageUrl={{@model.imageUrl}}
+        @thumbnailImageUrl={{@model.thumbnailImageUrl}}
         @imageId={{@model.imageId}}
         @title={{@model.title}}
         @artist={{@model.artist}}
         @date={{@model.date}}
         @description={{@model.description}}
+        @category={{@model.category}}
         @goBackToGallery={{@model.goBackToGallery}}
       />
     {{/if}}

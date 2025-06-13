@@ -7,7 +7,7 @@ export default class ImageDetailsComponent extends Component {
 
   @action
   addFavourite () {
-    this.favouritesService.add(this.args.imageId);
+    this.favouritesService.add(this.args.imageId, this.args.thumbnailImageUrl, this.args.category);
     this.args.goBackToGallery();
   }
   @action

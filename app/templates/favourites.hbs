@@ -2,5 +2,26 @@
 
 
 <div class="content-area">
-  <div>{{@model}}</div>
+  <div class="favourites-container">
+    <h1>Favourites</h1>
+    <h2>Total items: {{ @model.totalCount }}</h2>
+    <button type="button" class="button" {{on 'click' @model.goBackToGallery}} >Return to Gallery</button>
+    {{#each-in @model.categories as |categoryName categoryItems| }}
+      <h3 class="category-header">{{ categoryName }}</h3>
+      <h4>Total items: {{ categoryItems.length }}</h4>
+      <div class="category-items">
+        {{#each categoryItems as |artwork| }}
+          <div class="favourite-artwork">
+            <img src="{{ artwork.thumbnailImageUrl }}" alt="favourite artwork number {{artwork.imageId}}" />
+            <button class="overlay" type="button" {{on 'click' artwork.removeFromFavourites}} >
+              <p class="remove-icon">
+                <span class="material-icons x-icon">close</span>
+              </p>
+              Remove from Favourites
+            </button>
+          </div>
+        {{/each}}
+      </div>
+    {{/each-in}}
+  </div>
 </div>

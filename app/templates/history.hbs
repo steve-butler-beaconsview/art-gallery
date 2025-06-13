@@ -1,0 +1,13 @@
+{{page-title "History"}}
+
+<div class="content-area">
+  <div class="history-container">
+    <h1>Viewed Artworks</h1>
+    <button type="button" class="button" {{on 'click' @model.goBackToGallery}} >Return to Gallery</button>
+    {{#each @model.allViewed as |artwork|}}
+      <div class="viewed-artwork">
+        <img src="{{ artwork.thumbnailImageUrl }}" alt="viewed artwork number {{artwork.imageId}}" />
+      </div>
+    {{/each}}
+  </div>
+</div>

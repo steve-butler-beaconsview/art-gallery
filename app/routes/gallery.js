@@ -37,26 +37,32 @@ export default class GalleryRoute extends Route {
         imageId: undefined,
         imageInfoUrl: '',
         largeImageUrl: '',
+        thumbnailImageUrl: '',
         goBackToGallery,
       },
     };
-    const goToImageInfoPage = (id, imageInfoUrl, largeImageUrl) => {
+    const goToImageInfoPage = (id, imageInfoUrl, thumbnailImageUrl, largeImageUrl) => {
       Object.assign(model.selectedImageInfo, {
         imageId: id,
         imageInfoUrl,
+        thumbnailImageUrl,
         largeImageUrl,
       });
       this.router.transitionTo('artwork', { queryParams: { id } });
     };
-    const imagesInfo = data.map(({ id, image_id }) => ({
-      id,
-      goToImageInfoPage: () => goToImageInfoPage(
+    const imagesInfo = data.map(({ id, image_id }) => {
+      const imageUrl = image_id ? `https://www.artic.edu/iiif/2/${image_id}/full/200,/0/default.jpg` : 'assets/images/not-found.png';
+      return ({
         id,
-        `https://api.artic.edu/api/v1/artworks/${id}`,
-        `https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`
-      ),
-      imageUrl: `https://www.artic.edu/iiif/2/${image_id}/full/200,/0/default.jpg`,
-    }));
+        goToImageInfoPage: () => goToImageInfoPage(
+          id,
+          `https://api.artic.edu/api/v1/artworks/${id}`,
+          imageUrl,
+          `https://www.artic.edu/iiif/2/${image_id}/full/843,/0/default.jpg`
+        ),
+        imageUrl,
+      })
+    });
     model.paginationData = paginationData;
     model.imagesInfo = imagesInfo;
     return model;
@@ -90,6 +96,9 @@ export default class GalleryRoute extends Route {
     const goToFavourites = () => {
       this.router.transitionTo('favourites');
     }
+    const goToHistory = () => {
+      this.router.transitionTo('history');
+    }
     return {
       gridDimensions,
       paginationData,
@@ -98,6 +107,7 @@ export default class GalleryRoute extends Route {
       goToPrevPage: currentPageNumber > 1 ? () => goToIndexPage(currentPageNumber - 1) : undefined,
       goToNextPage: currentPageNumber < paginationData.totalPageCount ? () => goToIndexPage(currentPageNumber + 1) : undefined,
       goToFavourites,
+      goToHistory,
     }
   }
 }
