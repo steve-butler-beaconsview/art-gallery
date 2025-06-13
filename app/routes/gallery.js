@@ -52,7 +52,7 @@ export default class GalleryRoute extends Route {
       this.router.transitionTo('artwork', { queryParams: { id } });
     };
     const imagesInfo = data.map(({ id, image_id }) => {
-      const imageUrl = `https://www.artic.edu/iiif/2/${image_id}/full/200,/0/default.jpg`;
+      const imageUrl = image_id ? `https://www.artic.edu/iiif/2/${image_id}/full/200,/0/default.jpg` : 'assets/images/not-found.png';
       return ({
         id,
         goToImageInfoPage: () => goToImageInfoPage(
