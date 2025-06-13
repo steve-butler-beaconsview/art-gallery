@@ -4,7 +4,6 @@ import { service } from '@ember/service';
 
 export default class GalleryRoute extends Route {
   @service router;
-  @service('artworks') artworksService;
 
   queryParams = {
     page: { refreshModel: true },
