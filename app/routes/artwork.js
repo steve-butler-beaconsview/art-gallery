@@ -6,6 +6,7 @@ export default class ArtworkRoute extends Route {
     const {
       imageId,
       imageInfoUrl,
+      thumbnailImageUrl,
       largeImageUrl: imageUrl,
       goBackToGallery,
     } = this.controllerFor('gallery').get('model')?.selectedImageInfo || {};
@@ -23,14 +24,17 @@ export default class ArtworkRoute extends Route {
       artist_title: artist,
       date_display: date,
       description,
+      category_titles: categories,
     } = imageInfoResponse.data.data;
     const model = {
       title,
       artist,
       date,
       description: description || 'No description provided.',
+      thumbnailImageUrl,
       imageUrl,
       imageId,
+      category: categories[0],
       goBackToGallery,
     };
     return model;

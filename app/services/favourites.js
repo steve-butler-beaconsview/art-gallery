@@ -3,8 +3,11 @@ import { tracked } from '@glimmer/tracking';
 
 export default class FavouritesService extends Service {
   @tracked _favs = {};
-  add (imageId) {
-    this._favs[imageId] = true;
+  add (imageId, thumbnailImageUrl, category) {
+    this._favs[imageId] = {
+      thumbnailImageUrl,
+      category,
+    };
   }
   remove (imageId) {
     delete this._favs[imageId];
@@ -14,5 +17,8 @@ export default class FavouritesService extends Service {
   }
   getAllIds () {
     return Object.keys(this._favs);
+  }
+  getFavouriteInfo (imageId) {
+    return this._favs[imageId];
   }
 }
