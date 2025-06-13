@@ -1,4 +1,4 @@
-<a class="tile" tabindex="0" {{on 'click' @goToImageInfoPage}} >
+<button class="tile" tabindex="0" {{on 'click' @goToImageInfoPage}} >
   <div class="icons-overlay">
     {{#if this.wasViewed}}
       <div class="viewed-icon"><span class="material-icons">visibility</span></div>
@@ -8,4 +8,4 @@
     {{/if}}
   </div>
   <img src="{{@thumbnailUrl}}" />
-</a>
+</button>
