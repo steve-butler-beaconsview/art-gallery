@@ -11,7 +11,15 @@
       <h4>Total items: {{ categoryItems.length }}</h4>
       <div class="category-items">
         {{#each categoryItems as |artwork| }}
-          <img src="{{ artwork.thumbnailImageUrl }}" />
+          <div class="favourite-artwork">
+            <img src="{{ artwork.thumbnailImageUrl }}" />
+            <button class="overlay" {{on 'click' artwork.removeFromFavourites}} >
+              <p class="remove-icon">
+                <span class="material-icons x-icon">close</span>
+              </p>
+              Remove from Favourites
+            </button>
+          </div>
         {{/each}}
       </div>
     {{/each-in}}
