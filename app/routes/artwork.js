@@ -1,7 +1,10 @@
 import Route from '@ember/routing/route';
 import axios from 'axios';
+import { service } from '@ember/service';
 
 export default class ArtworkRoute extends Route {
+  @service('view-tracker') viewTrackerService;
+
   async model () {
     const {
       imageId,
@@ -19,6 +22,7 @@ export default class ArtworkRoute extends Route {
     } catch (e) {
       return { error: true };
     }
+    this.viewTrackerService.add(imageId);
     const {
       title,
       artist_title: artist,
@@ -26,7 +30,7 @@ export default class ArtworkRoute extends Route {
       description,
       category_titles: categories,
     } = imageInfoResponse.data.data;
-    const model = {
+    return {
       title,
       artist,
       date,
@@ -37,6 +41,5 @@ export default class ArtworkRoute extends Route {
       category: categories[0],
       goBackToGallery,
     };
-    return model;
   }
 }

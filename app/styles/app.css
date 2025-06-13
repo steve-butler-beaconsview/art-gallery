@@ -139,6 +139,7 @@
   .category-header {
     margin: 2rem 0 0;
   }
+
   .favourite-artwork {
     position: relative;
 
@@ -161,6 +162,7 @@
         opacity: 1;
         cursor: pointer;
       }
+
       .remove-icon {
         .x-icon {
           font-size: 72pt;
